@@ -20,19 +20,14 @@ export class Fighter {
 		return this.#life;
 	}
 
-	setLife(life) {
-		if (life < 0) this.#life = 0;
-		else this.#life = life;
+	reduceLife(points) {
+		this.#life = Math.max(this.#life - points, 0);
 	}
 
 	fight(attackedFighter) {
-		const damage = Math.floor(
-			1 + Math.floor(Math.random() * (this.strength - 1)),
-		);
+		const damage = Math.floor(Math.ceil(Math.random() * this.strength));
 		const damageAttackedFighter = damage - attackedFighter.dexterity;
 		if (damageAttackedFighter > 0)
-			attackedFighter.setLife(
-				attackedFighter.getLife() - damageAttackedFighter,
-			);
+			attackedFighter.reduceLife(damageAttackedFighter);
 	}
 }
