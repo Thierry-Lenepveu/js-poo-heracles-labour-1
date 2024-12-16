@@ -25,7 +25,7 @@ export class Fighter {
 	}
 
 	fight(attackedFighter) {
-		const damage = Math.floor(Math.ceil(Math.random() * this.strength));
+		const damage = Math.ceil(Math.random() * this.strength);
 		const damageAttackedFighter = damage - attackedFighter.dexterity;
 		if (damageAttackedFighter > 0)
 			attackedFighter.reduceLife(damageAttackedFighter);
